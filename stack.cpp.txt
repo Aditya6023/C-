@@ -1,0 +1,94 @@
+//Linked Stack  using class
+# include <iostream.h>
+# include <conio.h>
+//===================================
+struct Node
+	{
+			int data;
+			Node* next;
+	};
+//===================================
+class LinkedStack
+	{		Node * top;
+	public:
+		LinkedStack(void); 	 // CONSTRUCTOR
+		void PushData(int);
+													// TO ADD NODE AT BEG
+		void PopData(void);
+													// DELETE NODE AT BEG
+		void Traverse(void);	// DISPLAY ALL ELEMENTS
+			};
+//===================================
+LinkedStack::LinkedStack(void)  //CONSTRUCTOR
+	{	top=NULL;}
+//==================================
+
+void LinkedStack::PushData(int n)
+	{  	Node*newptr=new Node; //CREATING NODE
+			newptr->data=n; 			// SETTING VALUES
+			newptr->next=NULL;    //INITIALIZE NEXT WITH NULL
+	if(top==NULL) 						// CHECK BEFORE CONNECT
+		{
+		top=newptr;
+		}// if the new node is the first node
+		else
+		{
+		newptr->next=top;
+		top=newptr;
+		}  // IF L.L. EXISTS
+//==================================
+void LinkedStack::PopData()
+ {
+		 if(top==NULL)
+			{
+			cout<<"LinkedList Empty! Aborting.....";
+			getch();
+			return;
+			}
+		 Node* ptr; ptr=top;
+		 cout<<"Node deleted,"<<"The Data in deleted node is = "<<ptr->data;
+		 top=top->next;
+			 delete ptr; //to free memory of deleted node
+
+ }
+//==================================
+void LinkedStack::Traverse(void)
+	{
+	Node*ptr=top; int i=1;
+	if(top==NULL)
+		{
+		cout<<"ERROR! Empty List !!" <<endl;
+		return;
+		}
+	cout<<ptr->data<<"<---Top"<<endl;
+		ptr=ptr->next;
+		while(ptr!=NULL)
+			{
+			 cout<<ptr->data<<endl;
+			ptr=ptr->next;  	i++;
+			}
+	}
+//==================================
+void main()
+	{ 	LinkedStack L;  int val,choice,pos;
+do {
+	clrscr();
+	cout<<"	\tLINKED STACK MENU "<<endl
+	<<" \t\t\t1. Push Data"<<endl
+	<<" \t\t\t2. Pop Item"<<endl
+	<<" \t\t\t3. Display Items"<<endl
+	<<" \t\t\t4. Quit "<<endl<<endl
+	<<" \t\t\tEnter your choice (1-4)";
+		cin>>choice;
+switch(choice)
+	{               case 1: cout<<"Enter the value to  Add :";   cin>> val;L.PushData(val);break;
+		 case 2:  L.PopData();  break;
+		 case 3:  L.Traverse();	break;
+		 default:	cout<<"ERROR:Wrong choice!!" <<endl; break;
+		 case 4:  break;
+		}
+cout<<"\nPress any key to continue.......";
+ getch();
+	 }
+	 while(choice!=4); //END OF DO-WHILE
+}// END

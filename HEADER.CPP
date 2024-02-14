@@ -1,0 +1,9 @@
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+#include<process.h>
+#include<ctype.h>
+#include<string.h>
+#include<iomanip.h>
+#include<stdio.h>
+#include<stdlib.h>
